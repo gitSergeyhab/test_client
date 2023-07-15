@@ -6,6 +6,7 @@ import { DataFromDB } from "./pages/data-from-db";
 import { ImageFromClient } from "./pages/image-from-client";
 import { ImageFromServer } from "./pages/image-from-server";
 
+
 export const AppRoute = {
   Main: '/',
   DataFromClient: 'client-data',
@@ -15,8 +16,8 @@ export const AppRoute = {
   ImageFromServer: 'server-img'
 }
 
-export function App() {
 
+export function App() {
   return (
     <BrowserRouter>
       <Routes>

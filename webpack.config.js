@@ -15,6 +15,7 @@ const mode = {
   prod: 'production',
 };
 
+console.log()
 const isDev = process.env.NODE_ENV === mode.dev;
 
 const config = {
@@ -52,6 +53,11 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        isDev
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(dirname, 'src', 'index.html'),
     }),
