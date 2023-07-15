@@ -1,15 +1,20 @@
 
-const fakeData = [
-  {id: 1, name: 'DataFromDB 1'},
-  {id: 2, name: 'DataFromDB 2'},
-  {id: 3, name: 'DataFromDB 3'},
-  {id: 4, name: 'DataFromDB 4'},
 
-]
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { SERVER_URL } from "../const"
 
 export function DataFromDB() {
 
-  const elements = fakeData.map(({id, name}) => <li key={id}> {name} </li>)
+  const [bands, setBands] = useState<{id: number, name: string}[]>([])
+
+  useEffect(() => {
+    axios.get(`${SERVER_URL}api/db-data`)
+      .then(({data}) => setBands(data))
+      .catch(() => setBands([{id: 0, name: 'Error'}]))
+  }, [])
+
+  const elements = bands.map(({id, name}) => <li key={id}> {name} </li>)
   return (
     <section>
       <h1>DataFromDB</h1>
