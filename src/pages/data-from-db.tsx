@@ -1,5 +1,3 @@
-
-
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { SERVER_URL } from "../const"
@@ -14,7 +12,9 @@ export function DataFromDB() {
       .catch(() => setBands([{id: 0, name: 'Error'}]))
   }, [])
 
-  const elements = bands.map(({id, name}) => <li key={id}> {name} </li>)
+
+  const elements = bands.map(({id, name}) => <li key={id}> {name} </li>);
+
   return (
     <section>
       <h1>DataFromDB</h1>
